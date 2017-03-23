@@ -9,6 +9,8 @@ import Header from './views/components/header'
 import Results from './views/results'
 import DetailsPage from './views/detailsPage'
 import Details from './views/details'
+import MyEtsy from './views/myEtsyPage'
+import NewItemForm from './views/newItemForm'
 
 
 
@@ -18,10 +20,11 @@ var app = function() {
 			'home': 'handleHomePage',
 			'search/:query': 'handleSearchListPage',
 			'detail/:id': 'handleDetailsPage',
+			'myetsy': 'handleMyEtsyPage',
+			'newItem': 'handleNewItem',
 			'*default': 'handleHomePage'
 		},
 		handleHomePage: function(){
-			console.log("are you in home?")
 			var collectionInstance = new EtsyCollection()
 			var promise = collectionInstance.fetch({
 				dataType: 'jsonp',
@@ -37,7 +40,6 @@ var app = function() {
 			})
 		},
 		handleSearchListPage: function(query){
-			console.log("are you in search?")
 			var collectionInstance = new EtsyCollection()
 			var promise = collectionInstance.fetch({
 				dataType: 'jsonp',
@@ -54,7 +56,6 @@ var app = function() {
 			})
 		},
 		handleDetailsPage: function(id) {
-			console.log("are you in details?")
 			var modelInstance = new EtsyModel()
 			modelInstance.url += id + '.js'
 			var promise = modelInstance.fetch({
@@ -70,6 +71,12 @@ var app = function() {
 					/>, document.querySelector('.container'))
 			})
 		},
+		handleMyEtsyPage: function(){
+			ReactDOM.render(<MyEtsy />, document.querySelector('.container'))
+		},
+		handleNewItem: function(){
+			ReactDOM.render(<NewItemForm />, document.querySelector('.container'))
+		}
 	})
 	new EtsyRouter()
 	Backbone.history.start()

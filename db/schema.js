@@ -15,6 +15,15 @@ const usersSchema = new mongoose.Schema({
 
 })
 
+const etsySchema = new mongoose.Schema({
+	title: { type: String, required: true },
+	price: { type: String, required: true },
+	image: { type: String, required: false },
+	description: { type: String, required: true },
+	createdAt: { type: Date, default: Date.now }
+})
+
 module.exports = {
-  User: mongoose.model('User', usersSchema)
+  User: mongoose.model('User', usersSchema),
+  Etsy: mongoose.model('Etsy', etsySchema)
 }

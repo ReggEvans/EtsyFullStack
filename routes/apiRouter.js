@@ -3,7 +3,7 @@ const apiRouter = Router()
 let helpers = require('../config/helpers.js')
 
 let User = require('../db/schema.js').User
-
+let Etsy = require('../db/schema.js').Etsy
   
   apiRouter
     .get('/users', function(req, res){
@@ -46,6 +46,26 @@ let User = require('../db/schema.js').User
     })
 
     // Routes for a Model(resource) should have this structure
+  apiRouter
+  //READ
+  .get('/items', function(request, response) {
+    Etsy.find(request.query, function(error, records) {
+      if (error) {
+        return response.status(400).json(error)
+      }
+      response.json(records)
+    })
+  })
 
+  //CREATE
+  .post('/items', function(request, response) {
+      var newItem = new Etsy(request.body)
+      newItem.save(function(error, record) {
+        if (error) {
+          return response.status(400).json(error)
+        }
+        response.json(record)
+      })
+    })
 
 module.exports = apiRouter
