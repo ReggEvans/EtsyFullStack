@@ -17,7 +17,7 @@ Etsify is a full-stack website based on Etsy. It pulls from the Etsy API allowin
 
 ## Installation
 ```
-git clone https://github.com/ReggEvans/EtsyFullStack.git
+git clone https://github.com/ReggEvans/EtsyFullStack.git 
 cd EtsyFullStack
 npm install
 mongod
