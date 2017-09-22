@@ -6,7 +6,7 @@ import Footer from './components/footer'
 var DetailsPage = React.createClass({
 	render: function(){
 		return(
-			<div className="main-container">
+			<div className="main-container" id="details-container" >
 				<Header />
 				<Details collection={this.props.etsyModel}/>
 				<Footer />
